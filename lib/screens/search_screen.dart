@@ -131,7 +131,7 @@ class _SearchScreenState extends State<SearchScreen> {
           else if (results.isEmpty)
             _EmptyResult(query: _query.trim())
           else ...[
-            Text('Hasil', style: AppText.section),
+            const Text('Hasil', style: AppText.section),
             const SizedBox(height: 4),
             for (final result in results) _ResultRow(result: result),
           ],
