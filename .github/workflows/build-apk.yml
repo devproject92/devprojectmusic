@@ -36,10 +36,11 @@ jobs:
         if: always()
         run: |
           [ -s analyze.log ] || exit 0
-          printf '%s\n' "$(grep -oE '(error|warning|info) .*' analyze.log | head -10)" |
-            while IFS= read -r line; do
-              [ -n "$line" ] && echo "::error::$line"
-            done
+          findings="$(grep -E '^ *(error|warning|info) ' analyze.log | head -10 || true)"
+          [ -n "$findings" ] || exit 0
+          while IFS= read -r line; do
+            echo "::error::$line"
+          done <<< "$findings"
 
       - name: Test
         run: flutter test
