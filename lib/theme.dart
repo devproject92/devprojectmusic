@@ -12,6 +12,9 @@ class AppColors {
   static const lightText = Color(0xFFA1A1A6);
 }
 
+/// Nama keluarga huruf dari `pubspec.yaml` (assets/fonts).
+const String appFontFamily = 'Inter';
+
 class AppText {
   static const largeTitle = TextStyle(
     fontSize: 34,
@@ -33,6 +36,11 @@ class AppText {
   static const rowSub = TextStyle(
     fontSize: 15,
     color: AppColors.grayText,
+  );
+  static const label = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w600,
+    color: AppColors.ink,
   );
 }
 

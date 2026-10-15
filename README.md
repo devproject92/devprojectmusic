@@ -45,10 +45,24 @@ Pratinjau web memakai `./start.sh`: menjalankan `flutter build web --release`
 - `lib/main.dart` : titik masuk, tab bar bawah, dan mini player
 - `lib/player_state.dart` : status pemutar (lagu, putar/jeda, volume, progres)
 - `lib/data.dart` : data contoh lagu
-- `lib/theme.dart` : warna dan gaya teks
+- `lib/theme.dart` : warna, gaya teks, dan keluarga huruf aplikasi
 - `lib/screens/` : Beranda, Cari, Pustaka, Sedang Diputar
 - `lib/widgets/` : sampul album (digambar dengan kode), mini player, pil volume
+- `assets/fonts/` : font Inter (SIL OFL 1.1, lihat `Inter-LICENSE.txt`)
 - `test/` : tes widget dan tes logika pemutar
+
+## Identitas visual
+
+- **Ikon aplikasi**: motif piringan hitam hitam-putih, konsisten dengan sampul
+  album yang digambar `CustomPainter`. Tersedia dalam mipmap Android
+  (legacy + ikon adaptif untuk Android 8+) dan ikon web/PWA.
+- **Splash screen**: latar hitam dengan logo piringan putih
+  (`drawable-nodpi/splash_logo.png`), jadi perpindahan ke aplikasi terasa mulus
+  dan tidak berkedip putih.
+- **Tipografi**: font **Inter** (bobot 400/500/600/700) dipakai di Android
+  maupun web, sehingga teks tampil sama di semua perangkat.
+- **Web**: judul, deskripsi, warna tema, ikon, dan manifest PWA sudah
+  disesuaikan (bukan lagi bawaan Flutter).
 
 ## Catatan
 
@@ -59,9 +73,13 @@ Pratinjau web memakai `./start.sh`: menjalankan `flutter build web --release`
   atas/bawah.
 - Layar Sedang Diputar bisa digulir, jadi tidak meluber di layar pendek
   (landscape HP atau jendela browser yang pendek).
-- Masih tampilan saja: kolom pencarian belum memfilter lagu, kartu genre belum
-  bisa ditekan, tombol `···`/lirik/perangkat/antrean belum ada aksinya, durasi
-  semua lagu sama (3:32), dan status "suka" hilang saat ganti lagu.
+- Daftar di aplikasi bisa digulir dengan tetikus/trackpad saat dibuka di web.
+- Pencarian sudah menyaring lagu, playlist, dan album. Hasil pencarian bisa
+  langsung ditekan untuk memutar lagu, dan ada keadaan kosong bila tidak ada
+  yang cocok.
+- Masih tampilan saja: kartu genre belum bisa ditekan, tombol
+  `···`/lirik/perangkat/antrean belum ada aksinya, durasi semua lagu sama
+  (3:32), dan status "suka" hilang saat ganti lagu.
 - APK release masih ditandatangani debug key dan `applicationId` masih
   `com.contoh.music`, jadi belum siap dipublikasikan ke Play Store.
 

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,9 +21,12 @@ class MonokromApp extends StatelessWidget {
     return MaterialApp(
       title: 'Music',
       debugShowCheckedModeBanner: false,
+      // Menarik scroll juga dengan tetikus/trackpad, berguna di versi web.
+      scrollBehavior: const AppScrollBehavior(),
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
+        fontFamily: appFontFamily,
         scaffoldBackgroundColor: Colors.white,
         colorScheme: const ColorScheme.light(
           primary: AppColors.ink,
@@ -72,6 +76,19 @@ class _AppShellState extends State<AppShell> {
   }
 }
 
+/// Scroll dengan sentuhan, tetikus, trackpad, dan stylus.
+class AppScrollBehavior extends MaterialScrollBehavior {
+  const AppScrollBehavior();
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => const {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+        PointerDeviceKind.stylus,
+      };
+}
+
 class _NavBar extends StatelessWidget {
   const _NavBar({required this.index, required this.onTap});
 
@@ -119,9 +136,7 @@ class _NavBar extends StatelessWidget {
                           const SizedBox(height: 2),
                           Text(
                             _items[i].$2,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
+                            style: AppText.label.copyWith(
                               color: i == index
                                   ? AppColors.ink
                                   : AppColors.grayText,
