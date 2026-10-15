@@ -50,7 +50,7 @@ class NowPlayingScreen extends StatelessWidget {
                   // tetap terlihat di jendela yang sangat pendek.
                   final art = math.min(
                     c.maxWidth - 40,
-                    math.max(c.maxHeight * 0.4, 120),
+                    math.max(c.maxHeight * 0.4, 120.0),
                   );
                   final track = player.track;
                   final artStyle =
