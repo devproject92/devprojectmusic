@@ -1,0 +1,26 @@
+# OMGithub / runtime
+screenshots/
+*.log
+*.pid
+.agents/
+.agentsweb/
+.omgithub-runtime/
+.opencode-ssh/
+.opencode-web/
+node_modules/
+
+# IDE — file pribadi, jangan di-commit
+.idea/
+*.iml
+.vscode/
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+ios/Pods/
+.android/
+.pub-cache/
+.pub/
